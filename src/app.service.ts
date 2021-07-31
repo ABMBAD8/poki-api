@@ -15,10 +15,10 @@ export class AppService {
   }
 
   getPokemons() {
-    return this._http.get(`${this._config.get('POKEMON_API')}item/?limit=100&offset=0`);
+    return this._http.get(`${this._config.get('POKEMON_API')}item/?limit=100&offset=0`, { httpsAgent: new https.Agent({ rejectUnauthorized: false }) });
   }
 
-  getPokemon(url: string) {
-    return this._http.get(url, { httpAgent: new https.Agent({ rejectUnauthorized: false }) });
+  getPokemon(url: any) {
+    return this._http.get(url, { httpsAgent: new https.Agent({ rejectUnauthorized: false }) });
   }
 }
